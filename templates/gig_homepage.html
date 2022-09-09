@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    <title> Gig Homepage </title>
+{% endblock %}
+
+{% block content %}
+
+  <div class="container">
+    <h2> Welcome to freelancing Site</h2>
+      {% if msg %}
+      <div class="alert alert-success" role="alert">
+          {{msg}}
+      </div>
+      {% endif %}
+  </div>
+
+{% endblock %}
