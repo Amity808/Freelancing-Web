@@ -1,7 +1,11 @@
-fastapi
-sqlalchemy
-alembic
+fastapi~=0.81.0
+sqlalchemy~=1.4.40
+alembic~=1.8.1
 python-jose
 cryptography
-pydantic
-passlib
+pydantic~=1.10.1
+passlib~=1.7.4
+alembic
+pillow~=9.2.0
+black
+starlette~=0.19.1

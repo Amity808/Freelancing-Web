@@ -7,28 +7,32 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Explore</a>
+          <a class="nav-link" href="/">Explore</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            Account
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Account</a></li>
-            <li><a class="dropdown-item" href="#">Registration</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Login</a></li>
+            <li><a class="dropdown-item" href="/register">Registration</a></li>
+            <li><a class="dropdown-item" href="/login">Login</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Market Place
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/create-gig">Create Gig</a></li>
+            <li><a class="dropdown-item" href="/delete-gig">Delete Gig</a></li>
+          </ul>
         </li>
       </ul>
-      <form class="d-flex " role="search">
-        <input class="form-control me-2 lg" type="search" placeholder="Explore Today" aria-label="Search">
+      <form class="d-flex "  action="/search" role="search">
+        <input class="form-control me-2 lg" id="#autocomplete" name="query" type="search" placeholder="Explore Today" aria-label="Search">
         <button class="btn btn-outline-success lg" type="submit">Search</button>
       </form>
     </div>

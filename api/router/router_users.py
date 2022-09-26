@@ -4,7 +4,13 @@ from sqlalchemy.orm import Session
 from schemas.users import UserCreate, UserRes
 
 from db.database import get_db
-from api.repo.repo_users import create_new_user, list_AllUser, retrieve_UserId, update_UserId, delete_UserId
+from api.repo.repo_users import (
+    create_new_user,
+    list_AllUser,
+    retrieve_UserId,
+    update_UserId,
+    delete_UserId,
+)
 
 
 router = APIRouter()

@@ -7,7 +7,7 @@ class Base:
     id: Any
     __name__: str
 
-    #to generate tablename from class name
+    # to generate tablename from class name
 
     @declared_attr
     def __tablename__(cls) -> str:

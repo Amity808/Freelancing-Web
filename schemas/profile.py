@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional
+from fastapi import UploadFile, File
 
 
 class ProfileBase(BaseModel):
@@ -20,3 +21,6 @@ class ProfileRes(ProfileBase):
     class Config:
         orm_mode = True
 
+
+class ProfilePicture(BaseModel):
+    picture: str

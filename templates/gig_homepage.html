@@ -10,10 +10,23 @@
   <div class="container">
     <h2> Welcome to freelancing Site</h2>
       {% if msg %}
-      <div class="alert alert-success" role="alert">
-          {{msg}}
-      </div>
+        <div class="alert alert-success" role="alert">
+            {{msg}}
+        </div>
       {% endif %}
+    <div class="row">
+      {% for gig in gigs %}
+        <div class="col">
+         {% include 'card.html' %}
+        </div>
+            {% endfor %}
+            {% if msg %}
+
+        <div class="alert alert-success" role="alert">
+          {{msg}}
+        </div>
+      {% endif %}
+        </div>
   </div>
 
 {% endblock %}

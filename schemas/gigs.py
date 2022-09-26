@@ -63,5 +63,3 @@ class RequestBase(BaseModel):
 class RequestRes(RequestBase):
     class Config:
         orm_mode = True
-
-
