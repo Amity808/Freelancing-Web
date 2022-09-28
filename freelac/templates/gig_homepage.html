@@ -8,7 +8,7 @@
 {% block content %}
 
   <div class="container">
-    <h2> Welcome to freelancing Site</h2>
+    <h2 class="text-center"> Welcome to Freelancing Site</h2>
       {% if msg %}
         <div class="alert alert-success" role="alert">
             {{msg}}
@@ -16,8 +16,11 @@
       {% endif %}
     <div class="row">
       {% for gig in gigs %}
-        <div class="col">
+        <div class="col-lg-4 col-md-4">
          {% include 'card.html' %}
+            {% if loop.index % 3 %}
+                <br>
+            {% endif %}
         </div>
             {% endfor %}
             {% if msg %}

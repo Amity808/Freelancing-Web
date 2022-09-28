@@ -27,16 +27,16 @@ router = APIRouter()
 
 @router.post("/create-gig", response_model=GigRes)
 def create_Gig(
-    title: str = Form(...),
-    search_tags: str = Form(...),
-    gig_description: str = Form(...),
-    gig_requirements: str = Form(...),
-    faq: str = Form(...),
-    is_active: bool = True,
-    gig_doc: UploadFile = File(...),
-    gig_video: UploadFile = File(...),
-    gig_image: UploadFile = File(...),
-    db: Session = Depends(get_db),
+        title: str = Form(...),
+        search_tags: str = Form(...),
+        gig_description: str = Form(...),
+        gig_requirements: str = Form(...),
+        faq: str = Form(...),
+        is_active: bool = True,
+        gig_doc: UploadFile = File(...),
+        gig_video: UploadFile = File(...),
+        gig_image: UploadFile = File(...),
+        db: Session = Depends(get_db),
 ):
     filename = uuid.uuid4()
 
@@ -77,9 +77,9 @@ def create_Gig(
 
 @router.post("/create-a-gig", response_model=GigRes)
 def create_gig(
-    gig: GigBase,
-    db: Session = Depends(get_db),
-    current_user: str = Depends(oauth.oauth2_scheme),
+        gig: GigBase,
+        db: Session = Depends(get_db),
+        current_user: str = Depends(oauth.oauth2_scheme),
 ):
     user = get_current_user(db, current_user)
     users_id = user.id
@@ -103,19 +103,20 @@ def get_byId(id: int, db: Session = Depends(get_db)):
 
 
 @router.get("/gig/autocomplete")
-def autocompelete(terms: Optional[str], db: Session=Depends(get_db)):
+def autocompelete(terms: Optional[str], db: Session = Depends(get_db)):
     gigs = db.query(Gig).filter(Gig.title.contains(terms)).all()
-    sugestions = []
+    suggestions = []
     for gig in gigs:
-        sugestions.append(gig.title)
-    return sugestions
+        suggestions.append(gig.title)
+    return suggestions
+
 
 @router.put("/updateGig/{id}")
 def updateId(
-    id: int,
-    gig: GigBase,
-    db: Session = Depends(get_db),
-    current_user=Depends(oauth.get_current_user),
+        id: int,
+        gig: GigBase,
+        db: Session = Depends(get_db),
+        current_user=Depends(oauth.oauth2_scheme),
 ):
     users = get_current_user(db, current_user)
     existing_gigs = db.query(Gig).filter(Gig.id == id)
@@ -128,14 +129,14 @@ def updateId(
         gig.__dict__.update(id=id)
         existing_gigs.update(gig.__dict__)
         db.commit()
-        return {"Details": "Successfully Updated"}
+        return {"message": "Successfully Updated"}
     else:
         return {"message": " Your are not authorized"}
 
 
 @router.delete("/delete-gig/{id}")
 def delete_gigs(
-    id: int, db: Session = Depends(get_db), current_user=Depends(oauth.oauth2_scheme)
+        id: int, db: Session = Depends(get_db), current_user=Depends(oauth.oauth2_scheme)
 ):
     user = get_current_user(db, current_user)
     existing_gigs = db.query(Gig).filter(Gig.id == id)

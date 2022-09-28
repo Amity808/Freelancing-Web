@@ -34,6 +34,11 @@ def git_detail(request: Request, id: int, db: Session = Depends(get_db)):
     )
 
 
+@router.get("/update-gig/{id}")
+def update_gig(id: int, request: Request, db: Session = Depends(get_db)):
+    gigs = db.query(Gig).filter(Gig.id == id).first()
+    return templates.TemplateResponse("update_gig.html", {"request": request, "gigs": gigs})
+
 @router.get("/create-gig")
 def create_gig(request: Request):
     return templates.TemplateResponse("create_gig.html", {"request": request})
@@ -102,14 +107,14 @@ async def create_gig(request: Request, db: Session = Depends(get_db)):
         )
 
 
-@router.get("/delete-gig")
+@router.get("/update-delete-gig")
 def delete_gig(request: Request, db: Session = Depends(get_db)):
     errors = []
     token = request.cookies.get("access_token")
     if token is None:
         errors.append("Kindly Login")
         return templates.TemplateResponse(
-            "gig_delete.html", {"request": request, "errors": errors}
+            "gig_update_delete.html", {"request": request, "errors": errors}
         )
     else:
         try:
@@ -121,13 +126,13 @@ def delete_gig(request: Request, db: Session = Depends(get_db)):
             users = db.query(Users).filter(Users.email == email).first()
             gigs = db.query(Gig).filter(Gig.users_id == users.id).all()
             return templates.TemplateResponse(
-                "gig_delete.html", {"request": request, "gigs": gigs, "users": users}
+                "gig_update_delete.html", {"request": request, "gigs": gigs, "users": users}
             )
         except Exception as e:
             errors.append("Somthing is wrong")
             print(e)
             return templates.TemplateResponse(
-                "gig_delete.html", {"request": request, "errors": errors}
+                "gig_update_delete.html", {"request": request, "errors": errors}
             )
 
 

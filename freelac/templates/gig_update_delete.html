@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title>Delete Item</title>
+<title>Update and Delete Item</title>
 {% endblock %}
 
 {% block content %}
   <div class="container">
-    <h3>Delete Item</h3>
+    <h3 class="text-center">Update and Delete Gigs</h3>
       {% for error in errors %}
       <div class="alert alert-danger" role="alert">
           {{error}}
@@ -17,7 +17,7 @@
     <img src="..." class="img-thumbnail" alt="...">
 
      <div class="container">
-      <div class="card text-center">
+      <div class="card text-center table-striped">
       <div class="card-header">
           <h3>{{ gig.title }}</h3>
      </div>
@@ -34,6 +34,7 @@
         <p class="card-text">{{ users.email }}</p>
         <a href="#" class="btn btn-primary">Contact Seller</a>
       </div>
+          <a href="/update-gig/{{gig.id}}" class="btn btn-primary">Edit</a>
           <button type="submit" class="btn btn-danger" onclick="delete_gig({{gig.id}})">Delete Gig</button>
       <div class="card-footer text-muted">
       2 days ago
