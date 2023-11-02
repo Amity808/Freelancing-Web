@@ -6,6 +6,10 @@ cryptography
 pydantic~=1.10.1
 passlib~=1.7.4
 alembic
-pillow~=9.2.0
+Pillow
 black
 starlette~=0.19.1
+python-dotenv 
+Jinja2
+python-multipart
+bcrypt

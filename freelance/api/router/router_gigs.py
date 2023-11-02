@@ -15,6 +15,7 @@ from models.users import Users
 from schemas.gigs import GigBase, GigRes
 from models.gigs import Gig
 from db.database import get_db
+
 from api.repo.repo_gigs import (
     create_new_gig,
     list_allGig,
