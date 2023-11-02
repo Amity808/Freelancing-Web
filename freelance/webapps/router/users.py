@@ -2,7 +2,7 @@ from fastapi import APIRouter, Request, Depends, responses, status
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
-
+from fastapi.responses import RedirectResponse
 from core.hashing import Hash
 from db.database import get_db
 from models.users import Users

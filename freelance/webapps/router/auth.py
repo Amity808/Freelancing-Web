@@ -1,5 +1,6 @@
-from fastapi import APIRouter, Request, Depends, Response
+from fastapi import APIRouter, Request, Depends, Response, status
 from fastapi.templating import Jinja2Templates
+from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
 from jose import jwt
 
@@ -46,13 +47,17 @@ async def login(request: Request, response: Response, db: Session = Depends(get_
                     data, settings.SECRET_KEY, algorithm=settings.ALGORITHM
                 )
                 msg = "Login Successful"
-                response = templates.TemplateResponse(
-                    "login.html", {"request": request, "msg": msg}
-                )
+                response = RedirectResponse(url="/", status_code=status.HTTP_303_SEE_OTHER)
+                # response = templates.TemplateResponse(
+                #     "login.html", {"request": request, "msg": msg, 'res': res}
+                # )
                 response.set_cookie(
                     key="access_token", value=f"Bearer {jwt_token}", httponly=True
                 )
+               
+
                 return response
+                
             else:
                 errors.append("Invalid Password")
                 return templates.TemplateResponse(
